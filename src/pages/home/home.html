@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list *ngIf="!isAuthenticated">
+    <form (submit)="onLogin()" #form="ngForm">
+
+      <ion-item>
+        <ion-label>Username</ion-label>
+        <ion-input type="text" #nameField="ngModel" [(ngModel)]="user.name" name="user"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.pass" name="passwort" name="pass"></ion-input>
+      </ion-item>
+
+      <button ion-button type="submit">Button</button>
+
+    </form>
+
+
+
+
+    {{user.name + "  " + user.pass}}
+
+  </ion-list>
+
+</ion-content>
