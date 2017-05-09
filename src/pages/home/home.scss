@@ -1,3 +1,15 @@
 page-home {
 
+  .home-content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .pages-row{
+      flex-grow: 1;
+    }
+    .button-row{
+      width: 100%;
+      align-self: flex-end;
+    }
+  }
 }

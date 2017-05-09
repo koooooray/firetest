@@ -1,0 +1,27 @@
+<h1 text-center text-capitalize>
+  Sign in!
+</h1>
+
+<ion-row>
+  <ion-col>
+    <ion-list>
+
+      <ion-item>
+        <ion-label>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="signInUser.Email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="signInUser.Password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Reenter Password</ion-label>
+        <ion-input type="password" [(ngModel)]="signInUser.PasswordConfirm"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </ion-col>
+</ion-row>
+<button class="ion-button" (click)="signIn()">test</button>

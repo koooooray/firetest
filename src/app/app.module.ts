@@ -7,6 +7,10 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {FormsModule} from "@angular/forms";
 import {AngularFireModule} from "angularfire2";
+import {AuthenticationService} from "../providers/authentication-service";
+import {SigninPage} from "../pages/signin-page/signin-page";
+import {LoginPage} from "../pages/login-page/login-page";
+import {ForgotPasswordPage} from "../pages/forgot-password-page/forgot-password-page";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBR6aMOSmc48hcch6omz1_2WYJPc1kSsdY",
@@ -20,7 +24,10 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SigninPage,
+    LoginPage,
+    ForgotPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -36,6 +43,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    AuthenticationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

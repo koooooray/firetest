@@ -1,35 +1,23 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-
-  <ion-list *ngIf="!isAuthenticated">
-    <form (submit)="onLogin()" #form="ngForm">
-
-      <ion-item>
-        <ion-label>Username</ion-label>
-        <ion-input type="text" #nameField="ngModel" [(ngModel)]="user.name" name="user"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="user.pass" name="passwort" name="pass"></ion-input>
-      </ion-item>
-
-      <button ion-button type="submit">Button</button>
-
-    </form>
-
-
-
-
-    {{user.name + "  " + user.pass}}
-
-  </ion-list>
-
+<ion-content padding *ngIf="!isAuthenticated">
+  <div class="home-content">
+    <div class="pages-row" *ngIf="pageState === 'WELCOME'">
+      <h1 text-center text-capitalize>
+        Welcome!
+      </h1>
+    </div>
+    <div class="pages-row" page-signin-page *ngIf="pageState === 'SIGNIN'" (authenticationStateChanged)="onStateChanged($event)"></div>
+    <div class="pages-row" page-login-page *ngIf="pageState === 'LOGIN'" (authenticationStateChanged)="onStateChanged($event)"></div>
+    <div class="pages-row" page-forgot-password-page *ngIf="pageState === 'FORGOTPASSWORD'" (authenticationStateChanged)="onStateChanged($event)"></div>
+    <ion-row class="button-row">
+      <ion-col>
+        <button [disabled]="pageState === 'SIGNIN'" ion-button block (click)="onStateChanged('SIGNIN')">Sign in</button>
+      </ion-col>
+      <ion-col>
+        <button [disabled]="pageState === 'LOGIN'" ion-button block (click)="onStateChanged('LOGIN')">Login</button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+<ion-content padding *ngIf="isAuthenticated">
+  <button ion-button block (click)="onLogout()">Logout</button>
 </ion-content>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {User} from "../../app/models/user.model";
 import {AngularFire, AuthProviders, AuthMethods} from "angularfire2";
+import {AuthenticationStates} from "../../app/models/AuthenticationStates";
+import {authDataToAuthState} from "angularfire2/auth";
 
 
 @Component({
@@ -9,32 +11,27 @@ import {AngularFire, AuthProviders, AuthMethods} from "angularfire2";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  private user:User = {
-    name: "a@b.com",
-    pass: "aaaaaa"
-  };
+
   private isAuthenticated: boolean = false;
   private loggedInUser: firebase.User;
+  private pageState: string = AuthenticationStates.Welcome;
 
   constructor(public navCtrl: NavController, private af: AngularFire){
     this.af.auth.subscribe((auth)=>{
-      if(!auth){
-        return;
-      }
-      this.loggedInUser = auth.auth;
-      this.isAuthenticated = true;
+      console.log("HERE", auth);
+      this.loggedInUser = auth ? auth.auth : null;
+      this.isAuthenticated = auth !== null;
     });
   }
 
-  onLogin(){
-    this.af.auth.login({
-        email: this.user.name,
-        password: this.user.pass,
-      },
-      {
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password,
-      })
+  onStateChanged(newState:string):void{
+    this.pageState = newState;
+  }
+
+
+
+  onLogout(){
+    console.log(this.af.auth.logout());
   }
 
 }

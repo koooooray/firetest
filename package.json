@@ -44,5 +44,8 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "firetest: An Ionic project"
+  "description": "firetest: An Ionic project",
+  "config": {
+    "ionic_source_map": "source-map"
+  }
 }
