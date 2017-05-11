@@ -18,7 +18,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private af: AngularFire){
     this.af.auth.subscribe((auth)=>{
-      console.log("HERE", auth);
+      console.log("Authentication Changed: ", auth);
       this.loggedInUser = auth ? auth.auth : null;
       this.isAuthenticated = auth !== null;
     });
@@ -31,7 +31,7 @@ export class HomePage {
 
 
   onLogout(){
-    console.log(this.af.auth.logout());
+    this.af.auth.logout();
   }
 
 }

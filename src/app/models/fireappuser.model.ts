@@ -42,5 +42,10 @@ export class TestUser{
     Password: "123456",
     PasswordConfirm: "123456",
   }
+  public static readonly Empty: FireAppUser = {
+    Email: "",
+    Password: "",
+    PasswordConfirm: "",
+  }
 
 }

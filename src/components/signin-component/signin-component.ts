@@ -1,15 +1,15 @@
 import {Component, Output} from '@angular/core';
-import {AuthenticationBasePage} from "../AuthenticationBasePage";
 import {FireAppUser, TestUser} from "../../app/models/fireappuser.model";
 import {AuthenticationService} from "../../providers/authentication-service";
 import {SignInError} from "../../app/models/singinerror.model";
 import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
+import {AuthenticationBasePage} from "../../pages/AuthenticationBasePage";
 
 @Component({
   selector: 'div[page-signin-page]',
-  templateUrl: 'signin-page.html',
+  templateUrl: 'signin-component.html'
 })
-export class SigninPage extends AuthenticationBasePage {
+export class SigninComponent extends AuthenticationBasePage{
 
   constructor(private authenticationService: AuthenticationService, private formBuilder: FormBuilder) {
     super();
@@ -39,9 +39,9 @@ export class SigninPage extends AuthenticationBasePage {
         .then((auth)=>{
           console.log(auth);
         }).catch((err: SignInError)=>{
-          if(err.code === "auth/email-already-in-use"){
-            this.isUsernameTaken = true;
-          }
+        if(err.code === "auth/email-already-in-use"){
+          this.isUsernameTaken = true;
+        }
       });
     }
   }
@@ -66,5 +66,6 @@ export class SigninPage extends AuthenticationBasePage {
   onSubmit(form: NgForm){
     //form.
   }
+
 
 }

@@ -1,3 +1,6 @@
 page-signin-page {
-
+  .form-validation-message{
+    color: map-get($colors, danger);
+    font-size: 90px;
+  }
 }

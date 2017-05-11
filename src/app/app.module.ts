@@ -11,6 +11,7 @@ import {AuthenticationService} from "../providers/authentication-service";
 import {SigninPage} from "../pages/signin-page/signin-page";
 import {LoginPage} from "../pages/login-page/login-page";
 import {ForgotPasswordPage} from "../pages/forgot-password-page/forgot-password-page";
+import {SigninComponent} from "../components/signin-component/signin-component";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBR6aMOSmc48hcch6omz1_2WYJPc1kSsdY",
@@ -25,7 +26,7 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    SigninPage,
+    SigninComponent,
     LoginPage,
     ForgotPasswordPage
   ],
